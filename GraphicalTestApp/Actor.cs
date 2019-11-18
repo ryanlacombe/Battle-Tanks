@@ -69,11 +69,17 @@ namespace GraphicalTestApp
         public void AddChild(Actor child)
         {
             //## Implement AddChild(Actor) ##//
+            child.Parent = this;
+            _children.Add(child);
         }
 
         public void RemoveChild(Actor child)
         {
             //## Implement RemoveChild(Actor) ##//
+            if (_children.Remove(child) == true)
+            {
+                child.Parent = null;
+            }
         }
 
         public void UpdateTransform()
