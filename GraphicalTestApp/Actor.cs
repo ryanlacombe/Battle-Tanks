@@ -24,24 +24,24 @@ namespace GraphicalTestApp
         public float X
         {
             //## Implement the relative X coordinate ##//
-            get { return 0; }
+            get { return _localTransform.m13; }
             set { }
         }
         public float XAbsolute
         {
             //## Implement the absolute X coordinate ##//
-            get { return 0; }
+            get { return _globalTransform.m13; }
         }
         public float Y
         {
             //## Implement the relative Y coordinate ##//
-            get { return 0; }
+            get { return _localTransform.m23; }
             set { }
         }
         public float YAbsolute
         {
             //## Implement the absolute Y coordinate ##//
-            get { return 0; }
+            get { return _globalTransform.m23; }
         }
 
         public float GetRotation()
