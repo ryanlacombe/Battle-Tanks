@@ -65,6 +65,8 @@ namespace GraphicalTestApp
         public void Rotate(float radians)
         {
             //## Implement rotating _localTransform ##//
+            _localTransform.RotateZ(radians);
+            UpdateTransform();
         }
 
         public float GetScale()
