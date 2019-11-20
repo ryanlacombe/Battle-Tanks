@@ -16,6 +16,13 @@ namespace GraphicalTestApp
             game.Root = root;
 
             //## Set up game here ##//
+            Entity player = new Entity(640, 320);
+            Sprite playerSprite = new Sprite("tankGreen.png");
+            AABB hitbox = new AABB(160, 140);
+
+            root.AddChild(player);
+            player.AddChild(playerSprite);
+            player.AddChild(hitbox);
 
             game.Run();
         }

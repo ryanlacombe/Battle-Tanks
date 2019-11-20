@@ -17,6 +17,8 @@ namespace GraphicalTestApp
 
         public Actor Parent { get; private set; } = null;
         private List<Actor> _children = new List<Actor>();
+        private List<Actor> _additions = new List<Actor>();
+        private List<Actor> _removals = new List<Actor>();
 
         private Matrix3 _localTransform = new Matrix3();
         private Matrix3 _globalTransform = new Matrix3();
@@ -25,7 +27,11 @@ namespace GraphicalTestApp
         {
             //## Implement the relative X coordinate ##//
             get { return _localTransform.m13; }
-            set { }
+            set
+            {
+                _localTransform.SetTranslation(value, Y, 1);
+                UpdateTransform();
+            }
         }
         public float XAbsolute
         {
@@ -36,7 +42,11 @@ namespace GraphicalTestApp
         {
             //## Implement the relative Y coordinate ##//
             get { return _localTransform.m23; }
-            set { }
+            set
+            {
+                _localTransform.SetTranslation(X, value, 1);
+                UpdateTransform();
+            }
         }
         public float YAbsolute
         {
@@ -47,7 +57,9 @@ namespace GraphicalTestApp
         public float GetRotation()
         {
             //## Implement getting the rotation of _localTransform ##//
-            return 0;
+            return (float)Math.Atan2(
+                    _globalTransform.m21,
+                    _globalTransform.m11); ;
         }
 
         public void Rotate(float radians)
@@ -58,7 +70,7 @@ namespace GraphicalTestApp
         public float GetScale()
         {
             //## Implement getting the scale of _localTransform ##//
-            return 0;
+            return 1;
         }
 
         public void Scale(float scale)
@@ -67,7 +79,7 @@ namespace GraphicalTestApp
         }
 
         public void AddChild(Actor child)
-        {
+        {          
             //## Implement AddChild(Actor) ##//
             child.Parent = this;
             _children.Add(child);
@@ -111,6 +123,24 @@ namespace GraphicalTestApp
 
             //Call this Actor's OnUpdate events
             OnUpdate?.Invoke(deltaTime);
+
+            //Add all the Actors readied for addition
+            foreach (Actor a in _additions)
+            {
+                //Add a to _children
+                _children.Add(a);
+            }
+            //Reset the addition list
+            _additions.Clear();
+
+            //Remove all the Actors readied for removal
+            foreach (Actor a in _removals)
+            {
+                //Add a to _children
+                _children.Remove(a);
+            }
+            //Reset the removal list        
+            _removals.Clear();
 
             //Update all of this Actor's children
             foreach (Actor child in _children)
