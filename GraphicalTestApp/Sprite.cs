@@ -35,8 +35,8 @@ namespace GraphicalTestApp
             RL.DrawTextureEx(
                 _texture,
                 new Vector2(XAbsolute, YAbsolute),
-                GetRotation() * (float)(180.0f / Math.PI),
-                GetScale(),
+                GetRotationAbsolute() * (float)(180.0f / Math.PI),
+                GetScaleAbsolute(),
                 Color.WHITE);
             base.Draw();
         }

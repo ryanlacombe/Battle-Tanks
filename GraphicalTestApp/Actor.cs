@@ -58,10 +58,16 @@ namespace GraphicalTestApp
         {
             //## Implement getting the rotation of _localTransform ##//
             return (float)Math.Atan2(
+                    _localTransform.m21,
+                    _localTransform.m11); ;
+        }
+        public float GetRotationAbsolute()
+        {
+            //## Implement getting the rotation of _localTransform ##//
+            return (float)Math.Atan2(
                     _globalTransform.m21,
                     _globalTransform.m11); ;
         }
-
         public void Rotate(float radians)
         {
             //## Implement rotating _localTransform ##//
@@ -74,7 +80,11 @@ namespace GraphicalTestApp
             //## Implement getting the scale of _localTransform ##//
             return 1;
         }
-
+        public float GetScaleAbsolute()
+        {
+            //## Implement getting the scale of _localTransform ##//
+            return 1;
+        }
         public void Scale(float scale)
         {
             //## Implement scaling _localTransform ##//
@@ -99,6 +109,20 @@ namespace GraphicalTestApp
         public void UpdateTransform()
         {
             //## Implment UpdateTransform() ##//
+            if (Parent != null)
+            {
+                _globalTransform = Parent._globalTransform * _localTransform;
+
+            }
+            else
+            {
+                _globalTransform = _localTransform;
+            }
+
+            /*foreach (Entity child in _children)
+            {
+                child.UpdateTransform();
+            }*/
         }
 
         //Call the OnStart events of the Actor and its children
