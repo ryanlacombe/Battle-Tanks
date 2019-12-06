@@ -16,7 +16,7 @@ namespace GraphicalTestApp
         public bool Started { get; private set; } = false;
 
         public Actor Parent { get; private set; } = null;
-        private List<Actor> _children = new List<Actor>();
+        protected List<Actor> _children = new List<Actor>();
         private List<Actor> _additions = new List<Actor>();
         private List<Actor> _removals = new List<Actor>();
 
@@ -90,6 +90,15 @@ namespace GraphicalTestApp
             //## Implement scaling _localTransform ##//
         }
 
+        public Vector3 GetDirection()
+        {
+            return new Vector3(_localTransform.m12, _localTransform.m11, 0);
+        }
+        public Vector3 GetDirectionAbsolute()
+        {
+            return new Vector3(_globalTransform.m12, _globalTransform.m11, 0);
+        }
+
         public void AddChild(Actor child)
         {          
             //## Implement AddChild(Actor) ##//
@@ -119,10 +128,10 @@ namespace GraphicalTestApp
                 _globalTransform = _localTransform;
             }
 
-            /*foreach (Entity child in _children)
+            foreach (Actor child in _children)
             {
                 child.UpdateTransform();
-            }*/
+            }
         }
 
         //Call the OnStart events of the Actor and its children
