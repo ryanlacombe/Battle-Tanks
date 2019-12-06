@@ -31,17 +31,6 @@ namespace GraphicalTestApp
                     Rotate(0.5f * deltaTime);
                 }
             }
-        }
-        public void SetPosition(float x, float y)
-        {
-            foreach (Actor child in _children)
-            {
-                x = child.X;
-                y = child.Y;
-
-                child.X = 0;
-                child.Y = 0;
-            }
-        }
+        }        
     }
 }

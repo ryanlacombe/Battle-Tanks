@@ -16,7 +16,9 @@ namespace GraphicalTestApp
             _tankSprite = new Sprite("tankGreen.png");
             _hitbox = new AABB(90, 90);
             AddChild(_tankSprite);
-            AddChild(_hitbox);            
+            AddChild(_hitbox);
+            OnUpdate += Move;
+            OnUpdate += SetPosition;
         }
         
         public void Move(float deltaTime)
@@ -36,10 +38,13 @@ namespace GraphicalTestApp
                 YVelocity = 0;
             }
         }
-        public override void Update(float deltaTime)
-        {
-            OnUpdate += Move;
-            base.Update(deltaTime);
+        public void SetPosition(float deltaTime)
+        {           
+                Parent.X = XAbsolute;
+                Parent.Y = YAbsolute;
+
+                X = 0;
+                Y = 0;            
         }
     }
 }
