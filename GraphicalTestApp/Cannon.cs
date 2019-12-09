@@ -16,6 +16,7 @@ namespace GraphicalTestApp
             _cannonSprite.Y = -50;
             AddChild(_cannonSprite);
             OnUpdate += RotateCannon;
+            OnUpdate += Fire;
         }
 
         public void RotateCannon(float deltaTime)
@@ -32,7 +33,18 @@ namespace GraphicalTestApp
 
         public void Fire(float deltaTime)
         {
+            if (Input.IsKeyPressed(32))
+            {
+                Shell shell = new Shell(XAbsolute, YAbsolute);
+                Vector3 direction = GetDirectionAbsolute();
 
+                shell.Rotate(GetRotationAbsolute());
+                shell.X += direction.x * -50f;
+                shell.Y += direction.y * -50f;
+                shell.XVelocity += direction.x * -300f;
+                shell.YVelocity += direction.y * -300f;
+                Parent.Parent.AddChild(shell);
+            }
         }
     }
 }
