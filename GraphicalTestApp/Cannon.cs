@@ -29,5 +29,10 @@ namespace GraphicalTestApp
                 Rotate(-0.5f * deltaTime);
             }
         }
+
+        public void Fire(float deltaTime)
+        {
+
+        }
     }
 }
