@@ -11,7 +11,9 @@ namespace GraphicalTestApp
         public Tank(float x, float y) : base(x, y)
         {
             TankBase tank = new TankBase(0, 0);
+            Cannon cannon = new Cannon(0, 0);
             AddChild(tank);
+            AddChild(cannon);
             OnUpdate += RotateTank;
         }
         public void RotateTank(float deltaTime)
