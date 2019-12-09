@@ -14,7 +14,7 @@ namespace GraphicalTestApp
         public TankBase(float x, float y) : base (x, y)
         {
             _tankSprite = new Sprite("tankGreen.png");
-            _hitbox = new AABB(90, 90);
+            _hitbox = new AABB(120, 120);
             AddChild(_tankSprite);
             AddChild(_hitbox);
             OnUpdate += Move;
