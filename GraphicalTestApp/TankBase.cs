@@ -27,13 +27,22 @@ namespace GraphicalTestApp
         
         public void Move(float deltaTime)
         {
-            if (Input.IsKeyDown(83))
+            if (Input.IsKeyDown(83) && _playerNum == 0)
             {
                 YVelocity = 60f;
                 
             }
-            else if (Input.IsKeyDown(87))
+            else if (Input.IsKeyDown(87) && _playerNum == 0)
             {                
+                YVelocity = -60f;
+            }
+            else if (Input.IsKeyDown(75) && _playerNum == 1)
+            {
+                YVelocity = 60f;
+
+            }
+            else if (Input.IsKeyDown(73) && _playerNum == 1)
+            {
                 YVelocity = -60f;
             }
             else

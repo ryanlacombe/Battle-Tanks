@@ -23,11 +23,19 @@ namespace GraphicalTestApp
 
         public void RotateCannon(float deltaTime)
         {
-            if (Input.IsKeyDown(262))
+            if (Input.IsKeyDown(69) && _playerNum == 0)
             {
                 Rotate(0.5f * deltaTime);
             }
-            else if (Input.IsKeyDown(263))
+            else if (Input.IsKeyDown(81) && _playerNum == 0)
+            {
+                Rotate(-0.5f * deltaTime);
+            }
+            else if (Input.IsKeyDown(79) && _playerNum == 1)
+            {
+                Rotate(0.5f * deltaTime);
+            }
+            else if (Input.IsKeyDown(85) && _playerNum ==1)
             {
                 Rotate(-0.5f * deltaTime);
             }

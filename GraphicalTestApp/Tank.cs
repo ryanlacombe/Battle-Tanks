@@ -21,7 +21,7 @@ namespace GraphicalTestApp
         }
         public void RotateTank(float deltaTime)
         {
-            if (Input.IsKeyDown(65))
+            if (Input.IsKeyDown(65) && _playerNum == 0)
             {
                 foreach(Actor child in _children)
                 {
@@ -29,7 +29,23 @@ namespace GraphicalTestApp
                 }
             }
 
-            else if (Input.IsKeyDown(68))
+            else if (Input.IsKeyDown(68) && _playerNum == 0)
+            {
+                foreach (Actor child in _children)
+                {
+                    Rotate(0.5f * deltaTime);
+                }
+            }
+
+            else if (Input.IsKeyDown(74) && _playerNum == 1)
+            {
+                foreach (Actor child in _children)
+                {
+                    Rotate(-0.5f * deltaTime);
+                }
+            }
+
+            else if (Input.IsKeyDown(76) && _playerNum == 1)
             {
                 foreach (Actor child in _children)
                 {
