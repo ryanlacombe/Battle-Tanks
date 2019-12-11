@@ -39,6 +39,7 @@ namespace GraphicalTestApp
             Height = height;
         }
 
+        //Checks a collision between two AABBs
         public bool DetectCollision(AABB other)
         {
             if (Right >= other.Left && Bottom >= other.Top && Left <= other.Right && Top <= other.Bottom)
@@ -55,7 +56,7 @@ namespace GraphicalTestApp
 
         public bool DetectCollision(Vector3 point)
         {
-            //## Implement DetectCollision(Vector3) ##//
+            //Detects a collision between an AABB and a Vector3 point
             return  !(point.x < Bottom || point.y < Left || point.x > Top || point.y > Right);
         }
 

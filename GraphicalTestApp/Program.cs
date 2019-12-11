@@ -15,7 +15,7 @@ namespace GraphicalTestApp
             Actor root = new Actor();
             game.Root = root;
 
-            //## Set up game here ##//
+            //Sets the game to run
             Tank player = new Tank(640, 320, 0);
             Tank target = new Tank(920, 100, 1);
 

@@ -25,7 +25,7 @@ namespace GraphicalTestApp
         
         public float X
         {
-            //## Implement the relative X coordinate ##//
+            //Gets and Sets the relative X coordinate
             get { return _localTransform.m13; }
             set
             {
@@ -35,12 +35,12 @@ namespace GraphicalTestApp
         }
         public float XAbsolute
         {
-            //## Implement the absolute X coordinate ##//
+            //Gets the absolute X coordinate
             get { return _globalTransform.m13; }
         }
         public float Y
         {
-            //## Implement the relative Y coordinate ##//
+            //Gets and Sets the relative Y coordinate
             get { return _localTransform.m23; }
             set
             {
@@ -50,27 +50,27 @@ namespace GraphicalTestApp
         }
         public float YAbsolute
         {
-            //## Implement the absolute Y coordinate ##//
+            //Gets the absolute Y coordinate
             get { return _globalTransform.m23; }
         }
 
         public float GetRotation()
         {
-            //## Implement getting the rotation of _localTransform ##//
+            //Gets the relative rotation of _localTransform
             return (float)Math.Atan2(
                     _localTransform.m21,
                     _localTransform.m11); ;
         }
         public float GetRotationAbsolute()
         {
-            //## Implement getting the rotation of _localTransform ##//
+            //Gets the absolute rotation of _globalTransform
             return (float)Math.Atan2(
                     _globalTransform.m21,
                     _globalTransform.m11); ;
         }
         public void Rotate(float radians)
         {
-            //## Implement rotating _localTransform ##//
+            //Rotates the matrix by _localTransform
             _localTransform.RotateZ(radians);
             UpdateTransform();
         }
@@ -92,18 +92,21 @@ namespace GraphicalTestApp
 
         public Vector3 GetDirection()
         {
+            //Gets the relative direction of a moving object
             return new Vector3(_localTransform.m12, _localTransform.m11, 0);
         }
         public Vector3 GetDirectionAbsolute()
         {
+            //Gets the absolute direction of a moving object
             return new Vector3(_globalTransform.m12, _globalTransform.m11, 0);
         }
 
         public void AddChild(Actor child)
         {          
-            //## Implement AddChild(Actor) ##//
+            //Checks if child has no parent
             if (child.Parent == null)
             {
+                //Adds the child to the parent and _additions
                 child.Parent = this;
                 _additions.Add(child);
             }
@@ -111,9 +114,10 @@ namespace GraphicalTestApp
 
         public void RemoveChild(Actor child)
         {
-            //## Implement RemoveChild(Actor) ##//
+            //Checks if the child's parent has this child
             if (child.Parent == this)
             {
+                //Removes the child from the parent and adds it to _removals
                 child.Parent = null;
                 _removals.Add(child);
             }
