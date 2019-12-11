@@ -10,6 +10,8 @@ namespace GraphicalTestApp
     {
         private Sprite _cannonSprite;
         private int _playerNum;
+        private int _shellCount1;
+        private int _shellCount2;
 
         public Cannon(float x, float y, int playerNum)
         {
@@ -45,28 +47,44 @@ namespace GraphicalTestApp
         {
             if (Input.IsKeyPressed(70) && _playerNum == 0)
             {
-                Shell shell = new Shell(XAbsolute, YAbsolute, _playerNum);
-                Vector3 direction = GetDirectionAbsolute();
+                if(_shellCount1 < 5)
+                {
+                    Shell shell = new Shell(XAbsolute, YAbsolute, _playerNum);
+                    Vector3 direction = GetDirectionAbsolute();
 
-                shell.Rotate(GetRotationAbsolute());
-                shell.X += direction.x * -50f;
-                shell.Y += direction.y * -50f;
-                shell.XVelocity += direction.x * -300f;
-                shell.YVelocity += direction.y * -300f;
-                Parent.Parent.AddChild(shell);
+                    shell.Rotate(GetRotationAbsolute());
+                    shell.X += direction.x * -50f;
+                    shell.Y += direction.y * -50f;
+                    shell.XVelocity += direction.x * -300f;
+                    shell.YVelocity += direction.y * -300f;
+                    Parent.Parent.AddChild(shell);
+                    _shellCount1++;
+                }
+            }
+            else if(Input.IsKeyPressed(82) && _playerNum == 0)
+            {
+                _shellCount1 = 0;
             }
 
             else if (Input.IsKeyPressed(59) && _playerNum == 1)
             {
-                Shell shell = new Shell(XAbsolute, YAbsolute, _playerNum);
-                Vector3 direction = GetDirectionAbsolute();
+                if (_shellCount2 < 5)
+                {
+                    Shell shell = new Shell(XAbsolute, YAbsolute, _playerNum);
+                    Vector3 direction = GetDirectionAbsolute();
 
-                shell.Rotate(GetRotationAbsolute());
-                shell.X += direction.x * -50f;
-                shell.Y += direction.y * -50f;
-                shell.XVelocity += direction.x * -300f;
-                shell.YVelocity += direction.y * -300f;
-                Parent.Parent.AddChild(shell);
+                    shell.Rotate(GetRotationAbsolute());
+                    shell.X += direction.x * -50f;
+                    shell.Y += direction.y * -50f;
+                    shell.XVelocity += direction.x * -300f;
+                    shell.YVelocity += direction.y * -300f;
+                    Parent.Parent.AddChild(shell);
+                    _shellCount2++;
+                }
+            }
+            else if (Input.IsKeyPressed(80) && _playerNum == 1)
+            {
+                _shellCount2 = 0;
             }
         }
 
