@@ -19,6 +19,7 @@ namespace GraphicalTestApp
             AddChild(cannon);
             OnUpdate += RotateTank;
         }
+
         public void RotateTank(float deltaTime)
         {
             if (Input.IsKeyDown(65) && _playerNum == 0)

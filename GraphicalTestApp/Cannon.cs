@@ -13,7 +13,7 @@ namespace GraphicalTestApp
 
         public Cannon(float x, float y, int playerNum)
         {
-            _cannonSprite = new Sprite("barrelGreen_outline.png");
+            _cannonSprite = new Sprite("sprites/barrelGreen_outline.png");
             _cannonSprite.Y = -50;
             AddChild(_cannonSprite);
             _playerNum = playerNum;
@@ -43,7 +43,20 @@ namespace GraphicalTestApp
 
         public void Fire(float deltaTime)
         {
-            if (Input.IsKeyPressed(32))
+            if (Input.IsKeyPressed(70) && _playerNum == 0)
+            {
+                Shell shell = new Shell(XAbsolute, YAbsolute, _playerNum);
+                Vector3 direction = GetDirectionAbsolute();
+
+                shell.Rotate(GetRotationAbsolute());
+                shell.X += direction.x * -50f;
+                shell.Y += direction.y * -50f;
+                shell.XVelocity += direction.x * -300f;
+                shell.YVelocity += direction.y * -300f;
+                Parent.Parent.AddChild(shell);
+            }
+
+            else if (Input.IsKeyPressed(59) && _playerNum == 1)
             {
                 Shell shell = new Shell(XAbsolute, YAbsolute, _playerNum);
                 Vector3 direction = GetDirectionAbsolute();

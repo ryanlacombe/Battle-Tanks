@@ -15,7 +15,7 @@ namespace GraphicalTestApp
 
         public TankBase(float x, float y, int playerNum) : base (x, y)
         {
-            _tankSprite = new Sprite("tankGreen.png");
+            _tankSprite = new Sprite("sprites/tankGreen.png");
             _hitbox = new AABB(110, 110);
             hitboxes.Insert(playerNum, _hitbox);
             AddChild(_tankSprite);

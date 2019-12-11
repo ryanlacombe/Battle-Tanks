@@ -14,7 +14,7 @@ namespace GraphicalTestApp
 
         public Shell(float x, float y, int playerNum) : base(x, y)
         {
-            _shellSprite = new Sprite("bulletGreenSilver_outline.png");
+            _shellSprite = new Sprite("sprites/bulletGreenSilver_outline.png");
             _shellHitbox = new AABB(35, 40);
             _playerNum = playerNum;
             AddChild(_shellSprite);
