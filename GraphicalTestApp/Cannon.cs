@@ -9,12 +9,14 @@ namespace GraphicalTestApp
     class Cannon : Actor
     {
         private Sprite _cannonSprite;
+        private int _playerNum;
 
-        public Cannon(float x, float y)
+        public Cannon(float x, float y, int playerNum)
         {
             _cannonSprite = new Sprite("barrelGreen_outline.png");
             _cannonSprite.Y = -50;
             AddChild(_cannonSprite);
+            _playerNum = playerNum;
             OnUpdate += RotateCannon;
             OnUpdate += Fire;
         }
@@ -35,7 +37,7 @@ namespace GraphicalTestApp
         {
             if (Input.IsKeyPressed(32))
             {
-                Shell shell = new Shell(XAbsolute, YAbsolute);
+                Shell shell = new Shell(XAbsolute, YAbsolute, _playerNum);
                 Vector3 direction = GetDirectionAbsolute();
 
                 shell.Rotate(GetRotationAbsolute());
@@ -46,5 +48,6 @@ namespace GraphicalTestApp
                 Parent.Parent.AddChild(shell);
             }
         }
+
     }
 }

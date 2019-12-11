@@ -16,9 +16,11 @@ namespace GraphicalTestApp
             game.Root = root;
 
             //## Set up game here ##//
-            Tank player = new Tank(640, 320);           
+            Tank player = new Tank(640, 320, 0);
+            Tank target = new Tank(920, 100, 1);
 
             root.AddChild(player);
+            root.AddChild(target);
 
             game.Run();
         }

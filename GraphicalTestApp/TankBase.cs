@@ -9,14 +9,18 @@ namespace GraphicalTestApp
     class TankBase : Entity
     {
         protected Sprite _tankSprite;
-        protected AABB _hitbox;
+        public AABB _hitbox;
+        private int _playerNum;
+        static public List<AABB> hitboxes = new List<AABB>();
 
-        public TankBase(float x, float y) : base (x, y)
+        public TankBase(float x, float y, int playerNum) : base (x, y)
         {
             _tankSprite = new Sprite("tankGreen.png");
-            _hitbox = new AABB(120, 120);
+            _hitbox = new AABB(110, 110);
+            hitboxes.Insert(playerNum, _hitbox);
             AddChild(_tankSprite);
             AddChild(_hitbox);
+            _playerNum = playerNum;
             OnUpdate += Move;
             OnUpdate += SetPosition;
         }

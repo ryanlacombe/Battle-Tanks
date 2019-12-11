@@ -8,10 +8,13 @@ namespace GraphicalTestApp
 {
     class Tank : Entity
     {
-        public Tank(float x, float y) : base(x, y)
+        private int _playerNum;
+
+        public Tank(float x, float y, int playerNum) : base(x, y)
         {
-            TankBase tank = new TankBase(0, 0);
-            Cannon cannon = new Cannon(0, 0);
+            TankBase tank = new TankBase(0, 0, playerNum);
+            Cannon cannon = new Cannon(0, 0, playerNum);
+            _playerNum = playerNum;
             AddChild(tank);
             AddChild(cannon);
             OnUpdate += RotateTank;

@@ -112,7 +112,7 @@ namespace GraphicalTestApp
         public void RemoveChild(Actor child)
         {
             //## Implement RemoveChild(Actor) ##//
-            if (Parent == this)
+            if (child.Parent == this)
             {
                 child.Parent = null;
                 _removals.Add(child);
