@@ -8,6 +8,7 @@ Open the folder and double click "GraphicalTestApp.exe."
 Playing the game:
 
 There are two tanks that two players can play. 
+	
 	Player 1 plays the lower left tank and uses the W,A,S,D,Q,E,F, and R keys.
 		Use the W key to move forwards in the direction the tank is facing.
 		Use the A key to turn the tank counter-clockwise.
